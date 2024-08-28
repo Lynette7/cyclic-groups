@@ -1,6 +1,0 @@
-[package]
-name = "is_cyclic"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
