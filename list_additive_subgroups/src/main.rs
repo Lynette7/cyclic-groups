@@ -1,7 +1,7 @@
 use std::collections::HashSet;
 
 // Function to generate the subgroup of element g
-fn generate_subgroup(g: u32, m: u32) -> HashSet<u32> {
+fn subgroup(g: u32, m: u32) -> HashSet<u32> {
     let mut subgroup = HashSet::new();
     let mut element = 1;
     let mut i = 0;
@@ -15,12 +15,12 @@ fn generate_subgroup(g: u32, m: u32) -> HashSet<u32> {
 }
 
 // Function to find all subgroups of the group
-fn list_all_subgroups(m: u32) -> Vec<HashSet<u32>> {
+fn all_subgroups(m: u32) -> Vec<HashSet<u32>> {
     let mut subgroups = Vec::new();
 
     for g in 1..=m {
         if m % g == 0{
-            let subgroup = generate_subgroup(g, m);
+            let subgroup = subgroup(g, m);
             if !subgroups.contains(&subgroup) {
                 subgroups.push(subgroup);
             }
@@ -31,7 +31,7 @@ fn list_all_subgroups(m: u32) -> Vec<HashSet<u32>> {
 
 fn main() {
     let modulus = 12;
-    let subgroups = list_all_subgroups(modulus);
+    let subgroups = all_subgroups(modulus);
 
     println!("Subgroups of the additive group Z{} are:", modulus);
     for subgroup in subgroups {
